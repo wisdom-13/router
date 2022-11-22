@@ -1,16 +1,27 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Vidoes from './pages/Vidoes';
+import Root from './pages/Root';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <p>home</p>,
-    errorElement: <p>404</p>
+    element: <Root />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'vidoes',
+        element: <Vidoes />,
+      }
+    ]
   },
-  {
-    path: '/vidoes',
-    element: <p>vidoes</p>,
-  }
+
 ]);
 
 function App() {
